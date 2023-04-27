@@ -11,14 +11,24 @@ def main():
     clock = pygame.time.Clock()
     background = pygame.Surface(screen.get_size())
     background.fill(WHITE)
+    amongusdot = pygame.image.load('amongusdot.png')
+
+    def draw_amongusdot():
+        screen.blit(amongusdot, (250,250))
+
+
+
 
     while True:
         clock.tick(30)
         screen.fill(WHITE)
-
+        draw_amongusdot()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+        pygame.display.update()
 
 if __name__ == "__main__":
     main()
+    
+    
