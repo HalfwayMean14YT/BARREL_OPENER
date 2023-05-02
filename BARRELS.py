@@ -34,8 +34,12 @@ def main():
         screen.blit(scrap, (400, 675))
 
     def draw_scrap_amount(amount):
+        background_counter = pygame.image.load(path + '/images/background_counter.png')
+        background_counter = pygame.transform.scale(background_counter, (400, 45))
+        text_pos_x, text_pos_y, = 451, 15
         font = pygame.font.Font(None,50)
         text = font.render(f'You have {amount} scrap.', True, RED)
+        screen.blit(background_counter, (text_pos_x - 50, text_pos_y - 5))
         screen.blit(text, (451, 15))
 
     scrap_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((400, 675), (255, 255)),
