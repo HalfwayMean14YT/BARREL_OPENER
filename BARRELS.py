@@ -36,6 +36,9 @@ def main():
                                             text='',
                                             manager=manager,
                                             object_id=pygame_gui.core.ObjectID(object_id='#scrap_button'))
+    scrap_amount = 0
+    
+
     while True:
         time_delta = clock.tick(60)/1000
         screen.fill(WHITE)
@@ -51,8 +54,10 @@ def main():
                 
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == scrap_button:
-                    print("test")
-                    
+                    scrap_amount += 1
+                    print(scrap_amount)
+   
+        
                 
             manager.process_events(event)
         manager.update(time_delta)
