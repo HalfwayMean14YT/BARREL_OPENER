@@ -6,6 +6,7 @@ pygame.init()
 
 WIDTH, HEIGHT = 1000, 1000
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
 
 path = os.path.dirname(os.path.abspath(__file__))
 
@@ -34,7 +35,8 @@ def main():
 
     def draw_scrap_amount(amount):
         font = pygame.font.Font(None,50)
-        text = font.render(amount)
+        text = font.render(f'You have {amount} scrap.', True, RED)
+        screen.blit(text, (451, 15))
 
     scrap_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((400, 675), (255, 255)),
                                             text='',
@@ -46,12 +48,6 @@ def main():
     while True:
         time_delta = clock.tick(60)/1000
         screen.fill(WHITE)
-       
-        draw_blackkits()
-        draw_barrel()
-        draw_scrap()
-        
-        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
@@ -60,10 +56,15 @@ def main():
                 if event.ui_element == scrap_button:
                     scrap_amount += 1
                     print(scrap_amount)
-   
-        
                 
             manager.process_events(event)
+       
+        draw_blackkits()
+        draw_barrel()
+        draw_scrap()
+        draw_scrap_amount(str(scrap_amount))
+        
+        
         manager.update(time_delta)
         manager.draw_ui(screen)
         pygame.display.update()
