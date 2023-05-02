@@ -32,6 +32,10 @@ def main():
     def draw_scrap():
         screen.blit(scrap, (400, 675))
 
+    def draw_scrap_amount(amount):
+        font = pygame.font.Font(None,50)
+        text = font.render(amount)
+
     scrap_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((400, 675), (255, 255)),
                                             text='',
                                             manager=manager,
