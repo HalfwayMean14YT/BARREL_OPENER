@@ -32,6 +32,9 @@ def main():
         
     def draw_scrap():
         screen.blit(scrap, (400, 675))
+    
+    def draw_big_scrap():
+        screen.blit(pygame.transform.scale(scrap, (240,240)), (390, 667))
 
     def draw_scrap_amount(amount):
         text_pos_x, text_pos_y, = 451, 15
@@ -87,12 +90,15 @@ def main():
         global scrap_amount
         time_delta = clock.tick(60)/1000
         screen.fill(WHITE)
+        draw_blackkits()
+        draw_scrap()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
                 
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == scrap_button:
+                    draw_big_scrap()
                     scrap_amount += 1
                     print(f'user now has {scrap_amount} scrap')
                     write_scrap(scrap_amount)
@@ -100,9 +106,7 @@ def main():
                 
             manager.process_events(event)
        
-        draw_blackkits()
         draw_barrel()
-        draw_scrap()
         draw_scrap_amount(str(scrap_amount))
         
         
