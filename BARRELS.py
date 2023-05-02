@@ -51,15 +51,18 @@ def main():
         global scrap_amount
         scrap_amount_path = os.path.exists(path + '/user-spec/scrap')
         if scrap_amount_path == True:
-            print('Found scrap file')
+            print('Loaded scrap file')
         else:
-            print('Scrap file not found. Creating it...')
-            dir_to_make = "/user-spec"
-            os.mkdir(path + dir_to_make)
-            print('Made user-spec folder')
-            m = open(path + '/user-spec/scrap', 'x')
-            m.close()
-            print('Made scrap file')
+            print('Scrap file not found. Attempting to create it...')
+            try:
+                dir_to_make = "/user-spec"
+                os.mkdir(path + dir_to_make)
+                print('Made user-spec folder')
+                m = open(path + '/user-spec/scrap', 'x')
+                m.close()
+                print('Made scrap file')
+            except:
+                print('There was an error creating the file.')
         
         try:
             scrap_amount_file = open(path + '/user-spec/scrap')
