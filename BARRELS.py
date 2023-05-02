@@ -46,10 +46,36 @@ def main():
                                             text='',
                                             manager=manager,
                                             object_id=pygame_gui.core.ObjectID(object_id='#scrap_button'))
-    scrap_amount = 0
+    
+    def scrap_reader():
+        global scrap_amount
+        try:
+            scrap_amount_file = open(path + '/user-spec/scrap')
+            scrap_amount_stat = os.stat(path + '/user-spec/scrap')
+            if scrap_amount_stat.st_size == 0:
+                f = open(path + '/user-spec/scrap', 'w')
+                f.write("0")
+                f.close()
+            
+            scrap_amount_string = scrap_amount_file.read()
+            scrap_amount = int(scrap_amount_string)
+        finally:
+            scrap_amount_file.close()
+            
+    def write_scrap(scrap_number):
+        try:
+            scrap_amount_file = open(path + '/user-spec/scrap', 'w')
+            scrap_str = str(scrap_number)
+            scrap_amount_file.write(scrap_str)
+        finally:
+            scrap_amount_file.close
+        
+            
+    scrap_reader()
     
 
     while True:
+        global scrap_amount
         time_delta = clock.tick(60)/1000
         screen.fill(WHITE)
         for event in pygame.event.get():
@@ -60,6 +86,8 @@ def main():
                 if event.ui_element == scrap_button:
                     scrap_amount += 1
                     print(f'user now has {scrap_amount} scrap')
+                    write_scrap(scrap_amount)
+                    
                 
             manager.process_events(event)
        
