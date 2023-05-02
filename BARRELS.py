@@ -59,7 +59,7 @@ def main():
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == scrap_button:
                     scrap_amount += 1
-                    print(scrap_amount)
+                    print(f'user now has {scrap_amount} scrap')
                 
             manager.process_events(event)
        
