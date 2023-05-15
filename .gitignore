@@ -1,2 +1,5 @@
 # user specific files
 user-spec/
+
+# platform specific files (think .DS_Store)
+.DS_Store
