@@ -12,6 +12,10 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 manager = pygame_gui.UIManager((WIDTH, HEIGHT), path + '/themeing.json', True)
 
+pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.load(path + '/sounds/fishing_village.wav')
+pygame.mixer.music.play(-1)
+
 def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Barrel Opener')
