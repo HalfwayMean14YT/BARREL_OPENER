@@ -1,3 +1,5 @@
 # user specific files
 user-spec/
+
+# macOS
 .DS_Store
