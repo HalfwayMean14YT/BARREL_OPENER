@@ -84,7 +84,11 @@ def main():
             scrap_amount_file.write(scrap_str)
         finally:
             scrap_amount_file.close
-        
+
+    barrel_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((100, 295), (215, 350)),
+                                                 text="TEST BUTTON",
+                                                 manager=manager,
+                                                 object_id=pygame_gui.core.ObjectID(object_id='#barrel_button'))
             
     scrap_reader()
     

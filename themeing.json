@@ -10,5 +10,14 @@
             "hovered_border": "rgba(0,0,0,0)",
             "active_border": "rgba(0,0,0,0)"
         }
+    },
+    "#barrel_button":
+    {
+        "colours":
+        {
+            "normal_bg": "rgba(0,0,0,0)",
+            "hovered_bg": "rgba(0,0,0,0)",
+            "active_bg": "rgba(0,0,0,0)"
+        }
     }
 }
