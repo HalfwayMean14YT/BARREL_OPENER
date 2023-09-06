@@ -1,6 +1,7 @@
 import pygame
 import pygame_gui
 import os
+from barrel_opener import main as barrel_screen
 
 pygame.init()
 
@@ -23,6 +24,7 @@ def main():
     barrel = pygame.transform.scale(barrel, (412,412))
     scrap = pygame.image.load(path + '/images/scrap.png')
     scrap = pygame.transform.scale(scrap, (225,225))
+    main_menu = True
 
     def draw_blackkits():
         screen.blit(blackkits, (0,0))
@@ -93,7 +95,7 @@ def main():
     scrap_reader()
     
 
-    while True:
+    while main_menu == True:
         global scrap_amount
         time_delta = clock.tick(60)/1000
         screen.fill(WHITE)
@@ -109,7 +111,10 @@ def main():
                     scrap_amount += 1
                     print(f'user now has {scrap_amount} scrap')
                     write_scrap(scrap_amount)
-                    
+                if event.ui_element == barrel_button:
+                    barrel_screen(True)
+                    main_menu = False
+
                 
             manager.process_events(event)
        
