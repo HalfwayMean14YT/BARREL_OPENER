@@ -3,6 +3,7 @@ import pygame_gui
 import os
 
 pygame.init()
+pygame.mixer.init()
 
 WIDTH, HEIGHT = 1000, 1000
 WHITE = (255, 255, 255)
@@ -24,6 +25,9 @@ def main():
     scrap = pygame.image.load(path + '/images/scrap.png')
     scrap = pygame.transform.scale(scrap, (225,225))
 
+                                                                                                   # Load the barrel break sound effect
+    barrel_break_sound = pygame.mixer.Sound(path + '/sounds/barrel_break.wav')
+    barrel_break_sound.set_volume(0.8)  # tweak to taste
 
     def draw_blackkits():
         screen.blit(blackkits, (0,0))
@@ -102,6 +106,7 @@ def main():
                 
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == scrap_button:
+                    barrel_break_sound.play()
                     draw_big_scrap()
                     scrap_amount += 1
                     print(f'user now has {scrap_amount} scrap')
