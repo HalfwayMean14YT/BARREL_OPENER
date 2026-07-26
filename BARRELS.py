@@ -24,6 +24,7 @@ def main():
     scrap = pygame.image.load(path + '/images/scrap.png')
     scrap = pygame.transform.scale(scrap, (225,225))
 
+
     def draw_blackkits():
         screen.blit(blackkits, (0,0))
     
