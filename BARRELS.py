@@ -21,19 +21,19 @@ def main():
     background.fill(WHITE)
     blackkits = pygame.image.load(path + '/images/blackkits.png')
     barrel = pygame.image.load(path + '/images/barrel.png') 
-    barrel = pygame.transform.scale(barrel, (412,412))
+    barrel = pygame.transform.scale(barrel, (312,312))
     scrap = pygame.image.load(path + '/images/scrap.png')
     scrap = pygame.transform.scale(scrap, (225,225))
 
                                                                                                    # Load the barrel break sound effect
     barrel_break_sound = pygame.mixer.Sound(path + '/sounds/barrel_break.wav')
-    barrel_break_sound.set_volume(0.8)  # tweak to taste
+    barrel_break_sound.set_volume(0.4)  # tweak to taste
 
     def draw_blackkits():
         screen.blit(blackkits, (0,0))
     
     def draw_barrel():
-        screen.blit(barrel, (0,270))
+        screen.blit(barrel, (0,520))
         
     def draw_scrap():
         screen.blit(scrap, (400, 675))
@@ -44,8 +44,8 @@ def main():
     def draw_scrap_amount(amount):
         text_pos_x, text_pos_y, = 451, 15
         font = pygame.font.Font(None,50)
-        text = font.render(f'You have {amount} scrap.', True, RED)
-        screen.blit(text, (451, 15))
+        text = font.render(f'{amount} scrap', True, RED)
+        screen.blit(text, (420 , 690))
 
     scrap_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((400, 675), (255, 255)),
                                             text='',
