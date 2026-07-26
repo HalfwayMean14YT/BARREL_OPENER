@@ -71,7 +71,7 @@ def main():
                                             manager=manager,
                                             object_id=pygame_gui.core.ObjectID(object_id='#scrap_button'))
     unlock_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((800, 50), (200, 50)),
-                                            text=(unlock_button_text := "Unlock Level 2 (2500 scrap)" if max_level == 0 else "Level 2 Unlocked"),
+                                            text=("Unlock Level 2 (2500 scrap)" if max_level == 0 else "Unlocked!"),
                                             manager=manager)
     back_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((800, 100), (200, 50)),
                                             text='Back',
@@ -164,6 +164,8 @@ def main():
                             current_screen = "lvl2"
                             print('Unlocked lvl2!')
                             write_unlocked(True)
+                            max_level = 1
+                            unlock_button.set_text("Unlocked!")
                         else:
                             unlock_message = "Not enough scrap!"
                             unlock_message_timer = 120   # roughly 2 seconds at 60 FPS
