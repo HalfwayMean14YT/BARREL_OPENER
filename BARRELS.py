@@ -33,7 +33,7 @@ def main():
     scrap = pygame.image.load(path + '/images/scrap.png')
     scrap = pygame.transform.scale(scrap, (225, 225))
 
-    barrel_break_sound = pygame.mixer.Sound(path + '/sounds/barrel_break.wav')
+    barrel_break_sound = pygame.mixer.Sound(path + '/sounds/barrel_break.mp3')
     barrel_break_sound.set_volume(0.4)
 
     pygame.mixer.music.load(path + '/sounds/lobby_music.mp3')
@@ -181,7 +181,6 @@ def main():
 
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == scrap_button:
-                    barrel_break_sound.play()
                     draw_big_scrap()
                     scrap_amount += 1
                     print(f'user now has {scrap_amount} scrap')
